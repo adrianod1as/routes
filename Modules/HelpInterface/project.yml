@@ -1,0 +1,23 @@
+name: HelpInterface
+  
+targets:
+  HelpInterface:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: HelpInterface
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.help.interface
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+
+schemes:
+  HelpInterface:
+    build:
+      targets:
+        HelpInterface: all

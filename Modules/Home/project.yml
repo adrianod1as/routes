@@ -1,0 +1,29 @@
+name: Home
+  
+targets:
+  Home:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: Home
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.home
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+      - framework: HTTPClientInterface.framework
+        implicit: true
+      - framework: FeatureFlagInterface.framework
+        implicit: true
+      - framework: HomeInterface.framework
+        implicit: true
+
+schemes:
+  Home:
+    build:
+      targets:
+        Home: all

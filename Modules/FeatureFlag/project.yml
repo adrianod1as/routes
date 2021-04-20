@@ -1,0 +1,27 @@
+name: FeatureFlag
+  
+targets:
+  FeatureFlag:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: FeatureFlag
+        excludes:
+          - "**/*.md"
+    
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.featureflag
+
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+      - framework: FeatureFlagInterface.framework
+        implicit: true
+
+schemes:
+  FeatureFlag:
+    build:
+      targets:
+        FeatureFlag: all

@@ -1,0 +1,19 @@
+name: RouterServiceInterface
+  
+targets:
+  RouterServiceInterface:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: RouterServiceInterface
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.routerservice.interface
+schemes:
+  RouterServiceInterface:
+    build:
+      targets:
+        RouterServiceInterface: all

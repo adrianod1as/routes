@@ -1,0 +1,29 @@
+name: Login
+  
+targets:
+  Login:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: Login
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.login
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+      - framework: HTTPClientInterface.framework
+        implicit: true
+      - framework: FeatureFlagInterface.framework
+        implicit: true
+      - framework: LoginInterface.framework
+        implicit: true
+
+schemes:
+  Login:
+    build:
+      targets:
+        Login: all

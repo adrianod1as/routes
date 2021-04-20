@@ -1,0 +1,23 @@
+name: RegistrationInterface
+  
+targets:
+  RegistrationInterface:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: RegistrationInterface
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.registration.interface
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+
+schemes:
+  RegistrationInterface:
+    build:
+      targets:
+        RegistrationInterface: all

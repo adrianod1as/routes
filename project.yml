@@ -1,0 +1,107 @@
+name: Routes
+
+options:
+  bundleIdPrefix: br.com.dias
+  deploymentTarget:
+    iOS: 13.0
+
+targets:
+  Routes:
+    type: application
+    platform: iOS
+    sources:
+      - path: Routes
+    settings:
+      TARGETED_DEVICE_FAMILY: 1
+    scheme:
+      testTargets:
+        - name: RoutesTests
+          randomExecutionOrder: true
+          parallelizable: true
+      gatherCoverageData: true
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+      - framework: RouterService.framework
+        implicit: true
+      - framework: HTTPClientInterface.framework
+        implicit: true
+      - framework: HTTPClient.framework
+        implicit: true
+      - framework: FeatureFlagInterface.framework
+        implicit: true
+      - framework: FeatureFlag.framework
+        implicit: true
+      - framework: HomeInterface.framework
+        implicit: true
+      - framework: Home.framework
+        implicit: true
+      - framework: RegistrationInterface.framework
+        implicit: true
+      - framework: Registration.framework
+        implicit: true
+      - framework: LoginInterface.framework
+        implicit: true
+      - framework: Login.framework
+        implicit: true
+      - framework: ProfileInterface.framework
+        implicit: true
+      - framework: Profile.framework
+        implicit: true
+      - framework: HelpInterface.framework
+        implicit: true
+      - framework: Help.framework
+        implicit: true
+      - framework: SettingsInterface.framework
+        implicit: true
+      - framework: Settings.framework
+        implicit: true
+      - sdk: UIKit.framework
+      - sdk: Foundation.framework
+
+  RoutesTests:
+    platform: iOS
+    type: bundle.unit-test
+    transitivelyLinkDependencies: true
+    sources:
+      - path: RoutesTests
+    dependencies:
+      - target: Routes
+      
+projectReferences:
+  RouterServiceInterface:
+    path: Modules/RouterServiceInterface/RouterServiceInterface.xcodeproj
+  RouterService:
+    path: Modules/RouterService/RouterService.xcodeproj
+  HTTPClientInterface:
+    path: Modules/HTTPClientInterface/HTTPClientInterface.xcodeproj
+  HTTPClient:
+    path: Modules/HTTPClient/HTTPClient.xcodeproj
+  FeatureFlagInterface:
+    path: Modules/FeatureFlagInterface/FeatureFlagInterface.xcodeproj
+  FeatureFlag:
+    path: Modules/FeatureFlag/FeatureFlag.xcodeproj
+  HomeInterface:
+    path: Modules/HomeInterface/HomeInterface.xcodeproj
+  Home:
+    path: Modules/Home/Home.xcodeproj
+  LoginInterface:
+    path: Modules/LoginInterface/LoginInterface.xcodeproj
+  Login:
+    path: Modules/Login/Login.xcodeproj
+  RegistrationInterface:
+    path: Modules/RegistrationInterface/RegistrationInterface.xcodeproj
+  Registration:
+    path: Modules/Registration/Registration.xcodeproj
+  HelpInterface:
+    path: Modules/HelpInterface/HelpInterface.xcodeproj
+  Help:
+    path: Modules/Help/Help.xcodeproj
+  SettingsInterface:
+    path: Modules/SettingsInterface/SettingsInterface.xcodeproj
+  Settings:
+    path: Modules/Settings/Settings.xcodeproj
+  ProfileInterface:
+    path: Modules/ProfileInterface/ProfileInterface.xcodeproj
+  Profile:
+    path: Modules/Profile/Profile.xcodeproj  

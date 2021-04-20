@@ -1,0 +1,29 @@
+name: Profile
+  
+targets:
+  Profile:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: Profile
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.profile
+    dependencies:
+      - framework: ProfileInterface.framework
+        implicit: true
+      - framework: RouterServiceInterface.framework
+        implicit: true
+      - framework: HTTPClientInterface.framework
+        implicit: true
+      - framework: FeatureFlagInterface.framework
+        implicit: true
+
+schemes:
+  Profile:
+    build:
+      targets:
+        Profile: all

@@ -1,0 +1,23 @@
+name: HTTPClientInterface
+  
+targets:
+  HTTPClientInterface:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: HTTPClientInterface
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.httpclient.interface
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+
+schemes:
+  HTTPClientInterface:
+    build:
+      targets:
+        HTTPClientInterface: all
