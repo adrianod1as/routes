@@ -13,17 +13,55 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.profile
     dependencies:
-      - framework: ProfileInterface.framework
-        implicit: true
       - framework: RouterServiceInterface.framework
         implicit: true
       - framework: HTTPClientInterface.framework
         implicit: true
       - framework: FeatureFlagInterface.framework
         implicit: true
+      - framework: ProfileInterface.framework
+        implicit: true
+
+    preBuildScripts:
+      - script: 'swiftlint --config ../../.swiftlint.yml'
+        name: SwiftLint
+
+
+  ProfileTests:
+    type: bundle.unit-test
+    platform: iOS
+
+    sources:
+      - path: ProfileTests
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.profile.tests
+
+    dependencies:
+      - target: Profile
+      - target: ProfileSample
+
+  ProfileSample:
+    type: application
+    platform: iOS
+    sources: [ProfileSample]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.profile.sample
+
+    dependencies:
+      - target: Profile
 
 schemes:
   Profile:
     build:
       targets:
         Profile: all
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - name: ProfileTests
+          parallelizable: false
+          randomExecutionOrder: true
