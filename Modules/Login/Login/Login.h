@@ -1,11 +1,4 @@
-//
-//  Login.h
-//  Login
-//
-//  Created by Renato Mendes on 12/04/21.
-//
-
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 //! Project version number for Login.
 FOUNDATION_EXPORT double LoginVersionNumber;
