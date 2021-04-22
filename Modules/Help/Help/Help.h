@@ -1,10 +1,4 @@
-//
-//  Help.h
-//  Help
-//
-//
-
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 //! Project version number for Help.
 FOUNDATION_EXPORT double HelpVersionNumber;
