@@ -1,10 +1,4 @@
-//
-//  Settings.h
-//  Settings
-//
-//
-
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 //! Project version number for Settings.
 FOUNDATION_EXPORT double SettingsVersionNumber;
