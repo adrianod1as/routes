@@ -13,17 +13,55 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.registration
     dependencies:
-      - framework: RegistrationInterface.framework
-        implicit: true
       - framework: RouterServiceInterface.framework
         implicit: true
       - framework: HTTPClientInterface.framework
         implicit: true
       - framework: FeatureFlagInterface.framework
         implicit: true
+      - framework: RegistrationInterface.framework
+        implicit: true
+
+    preBuildScripts:
+      - script: 'swiftlint --config ../../.swiftlint.yml'
+        name: SwiftLint
+
+
+  RegistrationTests:
+    type: bundle.unit-test
+    platform: iOS
+
+    sources:
+      - path: RegistrationTests
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.registration.tests
+
+    dependencies:
+      - target: Registration
+      - target: RegistrationSample
+
+  RegistrationSample:
+    type: application
+    platform: iOS
+    sources: [RegistrationSample]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.registration.sample
+
+    dependencies:
+      - target: Registration
 
 schemes:
   Registration:
     build:
       targets:
         Registration: all
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - name: RegistrationTests
+          parallelizable: false
+          randomExecutionOrder: true
