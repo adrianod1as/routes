@@ -22,8 +22,46 @@ targets:
       - framework: HomeInterface.framework
         implicit: true
 
+    preBuildScripts:
+      - script: 'swiftlint --config ../../.swiftlint.yml'
+        name: SwiftLint
+
+
+  HomeTests:
+    type: bundle.unit-test
+    platform: iOS
+
+    sources:
+      - path: HomeTests
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.home.tests
+
+    dependencies:
+      - target: Home
+      - target: HomeSample
+
+  HomeSample:
+    type: application
+    platform: iOS
+    sources: [HomeSample]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.home.sample
+
+    dependencies:
+      - target: Home
+
 schemes:
   Home:
     build:
       targets:
         Home: all
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - name: HomeTests
+          parallelizable: false
+          randomExecutionOrder: true

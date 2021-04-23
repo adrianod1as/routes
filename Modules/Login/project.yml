@@ -22,8 +22,46 @@ targets:
       - framework: LoginInterface.framework
         implicit: true
 
+    preBuildScripts:
+      - script: 'swiftlint --config ../../.swiftlint.yml'
+        name: SwiftLint
+
+
+  LoginTests:
+    type: bundle.unit-test
+    platform: iOS
+
+    sources:
+      - path: LoginTests
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.login.tests
+
+    dependencies:
+      - target: Login
+      - target: LoginSample
+
+  LoginSample:
+    type: application
+    platform: iOS
+    sources: [LoginSample]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.login.sample
+
+    dependencies:
+      - target: Login
+
 schemes:
   Login:
     build:
       targets:
         Login: all
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - name: LoginTests
+          parallelizable: false
+          randomExecutionOrder: true

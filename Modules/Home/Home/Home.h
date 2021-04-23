@@ -1,10 +1,4 @@
-//
-//  Home.h
-//  Home
-//
-//
-
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 //! Project version number for Home.
 FOUNDATION_EXPORT double HomeVersionNumber;

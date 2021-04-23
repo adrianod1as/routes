@@ -13,17 +13,55 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.help
     dependencies:
-      - framework: HelpInterface.framework
-        implicit: true
       - framework: RouterServiceInterface.framework
         implicit: true
       - framework: HTTPClientInterface.framework
         implicit: true
       - framework: FeatureFlagInterface.framework
         implicit: true
+      - framework: HelpInterface.framework
+        implicit: true
+
+    preBuildScripts:
+      - script: 'swiftlint --config ../../.swiftlint.yml'
+        name: SwiftLint
+
+
+  HelpTests:
+    type: bundle.unit-test
+    platform: iOS
+
+    sources:
+      - path: HelpTests
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.help.tests
+
+    dependencies:
+      - target: Help
+      - target: HelpSample
+
+  HelpSample:
+    type: application
+    platform: iOS
+    sources: [HelpSample]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.help.sample
+
+    dependencies:
+      - target: Help
 
 schemes:
   Help:
     build:
       targets:
         Help: all
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - name: HelpTests
+          parallelizable: false
+          randomExecutionOrder: true

@@ -1,10 +1,4 @@
-//
-//  Profile.h
-//  Profile
-//
-//
-
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 //! Project version number for Profile.
 FOUNDATION_EXPORT double ProfileVersionNumber;

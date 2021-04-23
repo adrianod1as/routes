@@ -1,10 +1,4 @@
-//
-//  Registration.h
-//  Registration
-//
-//
-
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 //! Project version number for Registration.
 FOUNDATION_EXPORT double RegistrationVersionNumber;
