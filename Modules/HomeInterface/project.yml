@@ -1,0 +1,23 @@
+name: HomeInterface
+  
+targets:
+  HomeInterface:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: HomeInterface
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.home.interface
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+
+schemes:
+  HomeInterface:
+    build:
+      targets:
+        HomeInterface: all

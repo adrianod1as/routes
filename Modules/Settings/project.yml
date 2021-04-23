@@ -1,0 +1,67 @@
+name: Settings
+  
+targets:
+  Settings:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: Settings
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.settings
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+      - framework: HTTPClientInterface.framework
+        implicit: true
+      - framework: FeatureFlagInterface.framework
+        implicit: true
+      - framework: SettingsInterface.framework
+        implicit: true
+
+    preBuildScripts:
+      - script: 'swiftlint --config ../../.swiftlint.yml'
+        name: SwiftLint
+
+
+  SettingsTests:
+    type: bundle.unit-test
+    platform: iOS
+
+    sources:
+      - path: SettingsTests
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.settings.tests
+
+    dependencies:
+      - target: Settings
+      - target: SettingsSample
+
+  SettingsSample:
+    type: application
+    platform: iOS
+    sources: [SettingsSample]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.settings.sample
+
+    dependencies:
+      - target: Settings
+
+schemes:
+  Settings:
+    build:
+      targets:
+        Settings: all
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - name: SettingsTests
+          parallelizable: false
+          randomExecutionOrder: true

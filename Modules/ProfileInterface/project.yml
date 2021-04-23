@@ -1,0 +1,23 @@
+name: ProfileInterface
+  
+targets:
+  ProfileInterface:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: ProfileInterface
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.profile.interface
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+
+schemes:
+  ProfileInterface:
+    build:
+      targets:
+        ProfileInterface: all

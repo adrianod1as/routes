@@ -1,0 +1,37 @@
+name: RouterService
+  
+targets:
+  RouterService:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: RouterService
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.routerservice
+  RouterServiceTests:
+    type: bundle.unit-test
+    platform: iOS
+
+    sources:
+      - path: RouterServiceTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.routerservice.tests
+    dependencies:
+      - target: RouterService
+
+schemes:
+  RouterService:
+    build:
+      targets:
+        RouterService: all
+    test:
+      gatherCoverageData: true
+      targets:
+        - name: RouterServiceTests
+          parallelizable: false
+          randomExecutionOrder: true

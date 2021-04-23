@@ -1,0 +1,23 @@
+name: SettingsInterface
+  
+targets:
+  SettingsInterface:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: SettingsInterface
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.settings.interface
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+
+schemes:
+  SettingsInterface:
+    build:
+      targets:
+        SettingsInterface: all

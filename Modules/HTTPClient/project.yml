@@ -1,0 +1,25 @@
+name: HTTPClient
+  
+targets:
+  HTTPClient:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: HTTPClient
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.httpclient
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+      - framework: HTTPClientInterface.framework
+        implicit: true
+
+schemes:
+  HTTPClient:
+    build:
+      targets:
+        HTTPClient: all

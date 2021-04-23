@@ -1,0 +1,23 @@
+name: LoginInterface
+  
+targets:
+  LoginInterface:
+    type: framework
+    platform: iOS
+
+    sources:
+      - path: LoginInterface
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.dias.login.interface
+    dependencies:
+      - framework: RouterServiceInterface.framework
+        implicit: true
+
+schemes:
+  LoginInterface:
+    build:
+      targets:
+        LoginInterface: all
