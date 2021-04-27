@@ -1,10 +1,11 @@
 import Foundation
+import HTTPClientInterface
 
 protocol LoginServicing {
 }
 
 final class LoginService {
-    typealias Dependencies = HasNoDependency
+    typealias Dependencies = HasHTTPClient
     private let dependencies: Dependencies
 
     init(dependencies: Dependencies) {

@@ -1,8 +1,18 @@
 import HTTPClientInterface
+import RouterServiceInterface
 import UIKit
 
-enum LoginFactory {
-    static func make(with container: LoginDependencyContainer) -> UIViewController {
+typealias LoginDependencyContainer = HasNoDependency & HasHTTPClient & HasRouterService
+
+public struct LoginFeature: Feature, LoginDependencyContainer {
+    @Dependency public var httpClient: HTTPClienting
+    @Dependency public var routerService: RouterServiceProtocol
+
+    public init() {}
+
+    public func build(fromRoute route: Route?) -> UIViewController {
+        let container = self
+//        return LoginFactory.make(with: container)
         let service: LoginServicing = LoginService(dependencies: container)
         let coordinator: LoginCoordinating = LoginCoordinator(dependencies: container)
         let presenter: LoginPresenting = LoginPresenter(coordinator: coordinator, dependencies: container)

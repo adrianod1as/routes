@@ -39,5 +39,8 @@ extension LoginInteractor: LoginInteracting {
         return cell
     }
 
-    func didSelect(index: Int) {}
+    func didSelect(index: Int) {
+        let action: LoginAction = menuItems[index] == .home ? .home : .registration
+        presenter.didNextStep(action: action)
+    }
 }

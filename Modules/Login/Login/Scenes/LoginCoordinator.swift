@@ -1,6 +1,11 @@
+import HomeInterface
+import RegistrationInterface
+import RouterServiceInterface
 import UIKit
 
 enum LoginAction {
+    case home
+    case registration
 }
 
 protocol LoginCoordinating: AnyObject {
@@ -9,7 +14,7 @@ protocol LoginCoordinating: AnyObject {
 }
 
 final class LoginCoordinator {
-    typealias Dependencies = HasNoDependency
+    typealias Dependencies = HasRouterService
     private let dependencies: Dependencies
 
     weak var viewController: UIViewController?
@@ -22,5 +27,14 @@ final class LoginCoordinator {
 // MARK: - LoginCoordinating
 extension LoginCoordinator: LoginCoordinating {
     func perform(action: LoginAction) {
+        guard let viewController = viewController else { return }
+        let route: Route = action == .home ? HomeRoute(username: "Old User") : RegistrationRoute()
+        let style: PresentationStyle = action == .home ? Replace() : Push()
+        dependencies.routerService.navigate(
+            toRoute: route,
+            fromView: viewController,
+            presentationStyle: style,
+            animated: true
+        )
     }
 }

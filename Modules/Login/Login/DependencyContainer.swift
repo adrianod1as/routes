@@ -1,5 +1,20 @@
-protocol HasNoDependency {}
+import HTTPClientInterface
+import RouterServiceInterface
 
-typealias Dependencies = HasNoDependency
+public protocol HasNoDependency {}
 
-final class DependencyContainer: Dependencies {}
+typealias Dependencies = HasNoDependency & HasHTTPClient
+
+final class DependencyContainer: DependencyContaining, Dependencies {
+    lazy var httpClient: HTTPClienting = resolve()
+
+    let dependencies: [Any]
+
+    init(_ dependencies: Any...) {
+        self.dependencies = dependencies
+    }
+
+    func resolve() -> HTTPClienting {
+        resolve(T: HTTPClienting.self)
+    }
+}
