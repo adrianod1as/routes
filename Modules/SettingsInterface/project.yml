@@ -1,5 +1,9 @@
 name: SettingsInterface
-  
+
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   SettingsInterface:
     type: framework

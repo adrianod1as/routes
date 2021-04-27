@@ -1,5 +1,9 @@
 name: RegistrationInterface
-  
+
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   RegistrationInterface:
     type: framework

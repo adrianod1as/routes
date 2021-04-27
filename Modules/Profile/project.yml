@@ -1,5 +1,9 @@
 name: Profile
-  
+
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   Profile:
     type: framework

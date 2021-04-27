@@ -1,5 +1,9 @@
 name: Login
-  
+
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   Login:
     type: framework

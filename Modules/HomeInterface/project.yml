@@ -1,5 +1,8 @@
 name: HomeInterface
-  
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   HomeInterface:
     type: framework

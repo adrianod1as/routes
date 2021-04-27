@@ -1,5 +1,9 @@
 name: Registration
-  
+
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   Registration:
     type: framework
