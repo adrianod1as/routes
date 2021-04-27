@@ -1,6 +1,10 @@
 import Foundation
 import UIKit
 
+public protocol HasRouterService {
+    var routerService: RouterServiceProtocol { get }
+}
+
 public protocol RouterServiceProtocol: RouterServiceAnyRouteDecodingProtocol {
     func navigate(
         toRoute route: Route,
