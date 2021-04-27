@@ -1,7 +1,7 @@
 import UIKit
 
 protocol HomeDisplaying: AnyObject {
-    func displaySomething()
+    func diplay(title: String)
 }
 
 private extension HomeViewController.Layout {
@@ -24,7 +24,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         setupLayout()
-        interactor.doSomething()
+        interactor.getTitle()
     }
 
     init(interactor: HomeInteracting) {
@@ -58,10 +58,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        interactor.didSelect(index: indexPath.row)
     }
 }
 
 // MARK: - HomeDisplaying
 extension HomeViewController: HomeDisplaying {
-    func displaySomething() { }
+    func diplay(title: String) {
+        self.title = title
+    }
 }

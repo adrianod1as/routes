@@ -2,7 +2,7 @@ import Foundation
 
 protocol HomePresenting: AnyObject {
     var viewController: HomeDisplaying? { get set }
-    func displaySomething()
+    func present(username: String)
     func didNextStep(action: HomeAction)
 }
 
@@ -21,8 +21,8 @@ final class HomePresenter {
 
 // MARK: - HomePresenting
 extension HomePresenter: HomePresenting {
-    func displaySomething() {
-        viewController?.displaySomething()
+    func present(username: String) {
+        viewController?.diplay(title: "\(username)'s Home")
     }
     
     func didNextStep(action: HomeAction) {
