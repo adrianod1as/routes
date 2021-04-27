@@ -5,18 +5,43 @@
 //  Created by José Silva on 20/04/21.
 //
 
+import HTTPClientInterface
+import HTTPClient
+import Home
+import Login
+import Registration
+import RouterService
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    let routerService = RouterService()
+
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+
+        routerService.register(dependencyFactory: {
+            return HTTPClient()
+        }, forType: HTTPClienting.self)
+
+
+        routerService.register(routeHandler: LoginRouteHandler())
+        routerService.register(routeHandler: HomeRouteHandler())
+        routerService.register(routeHandler: RegistrationRouteHandler())
+
+        let nav = routerService.navigationController(
+            withInitialFeature: LoginFeature.self
+        )
+
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
