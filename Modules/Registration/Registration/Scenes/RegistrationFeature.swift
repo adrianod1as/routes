@@ -1,8 +1,18 @@
 import HTTPClientInterface
+import RouterServiceInterface
 import UIKit
 
-enum RegistrationFactory {
-    static func make(with container: RegistrationDependencyContainer) -> UIViewController {
+typealias RegistrationDependencyContainer = HasNoDependency & HasHTTPClient & HasRouterService
+
+public struct RegistrationFeature: Feature, RegistrationDependencyContainer {
+    @Dependency public var httpClient: HTTPClienting
+    @Dependency public var routerService: RouterServiceProtocol
+
+    public init() {}
+
+    public func build(fromRoute route: Route?) -> UIViewController {
+        let container = /* DependencyContainer(httpClient) */ self
+        //        return RegistrationFactory.make(with: container)
         let service: RegistrationServicing = RegistrationService(dependencies: container)
         let coordinator: RegistrationCoordinating = RegistrationCoordinator(dependencies: container)
         let presenter: RegistrationPresenting = RegistrationPresenter(coordinator: coordinator, dependencies: container)

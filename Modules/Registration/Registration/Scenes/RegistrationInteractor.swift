@@ -39,5 +39,7 @@ extension RegistrationInteractor: RegistrationInteracting {
         return cell
     }
 
-    func didSelect(index: Int) {}
+    func didSelect(index: Int) {
+        presenter.didNextStep(action: .home)
+    }
 }

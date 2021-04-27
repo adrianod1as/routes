@@ -1,6 +1,9 @@
+import HomeInterface
+import RouterServiceInterface
 import UIKit
 
 enum RegistrationAction {
+    case home
 }
 
 protocol RegistrationCoordinating: AnyObject {
@@ -9,7 +12,7 @@ protocol RegistrationCoordinating: AnyObject {
 }
 
 final class RegistrationCoordinator {
-    typealias Dependencies = HasNoDependency
+    typealias Dependencies = HasRouterService
     private let dependencies: Dependencies
 
     weak var viewController: UIViewController?
@@ -22,5 +25,12 @@ final class RegistrationCoordinator {
 // MARK: - RegistrationCoordinating
 extension RegistrationCoordinator: RegistrationCoordinating {
     func perform(action: RegistrationAction) {
+        guard let viewController = viewController else { return }
+        dependencies.routerService.navigate(
+            toRoute: HomeRoute(username: "New User"),
+            fromView: viewController,
+            presentationStyle: Replace(),
+            animated: true
+        )
     }
 }
