@@ -25,6 +25,24 @@ public extension PresentationStyle {
     }
 }
 
+public typealias Replace = ReplacePresentationStyle
+
+open class ReplacePresentationStyle: PresentationStyle {
+
+    public init() {}
+
+    open func present(
+        viewController: UIViewController,
+        fromViewController: UIViewController,
+        animated: Bool,
+        completion: (() -> Void)? = nil
+    ) {
+        fromViewController
+            .navigationController?
+            .setViewControllers([viewController], animated: animated)
+    }
+}
+
 public typealias Push = PushPresentationStyle
 
 open class PushPresentationStyle: PresentationStyle {
