@@ -8,3 +8,9 @@ public protocol RouteHandler {
         fromViewController viewController: UIViewController
     ) -> Feature.Type
 }
+
+public extension RouteHandler {
+    func isAnExpected(route: Route) -> Bool {
+        routes.contains(where: { $0 == type(of: route)} )
+    }
+}
