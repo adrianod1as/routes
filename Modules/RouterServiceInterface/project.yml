@@ -1,5 +1,9 @@
 name: RouterServiceInterface
-  
+
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   RouterServiceInterface:
     type: framework

@@ -1,5 +1,9 @@
 name: HelpInterface
-  
+
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   HelpInterface:
     type: framework

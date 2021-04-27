@@ -1,5 +1,9 @@
 name: HTTPClientInterface
-  
+
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   HTTPClientInterface:
     type: framework

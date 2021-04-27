@@ -1,5 +1,9 @@
 name: Settings
-  
+
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   Settings:
     type: framework

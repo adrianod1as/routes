@@ -1,5 +1,9 @@
 name: FeatureFlag
-  
+
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   FeatureFlag:
     type: framework

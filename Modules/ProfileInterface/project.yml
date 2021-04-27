@@ -1,5 +1,9 @@
 name: ProfileInterface
-  
+
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   ProfileInterface:
     type: framework

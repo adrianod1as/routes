@@ -1,5 +1,9 @@
 name: Home
-  
+
+options:
+  deploymentTarget:
+    iOS: 13.0
+
 targets:
   Home:
     type: framework

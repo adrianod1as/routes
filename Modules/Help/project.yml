@@ -1,4 +1,8 @@
 name: Help
+
+options:
+  deploymentTarget:
+    iOS: 13.0
   
 targets:
   Help:
