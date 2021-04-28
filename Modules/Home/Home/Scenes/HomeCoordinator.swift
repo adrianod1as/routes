@@ -1,5 +1,8 @@
+import HelpInterface
 import LoginInterface
+import ProfileInterface
 import RouterServiceInterface
+import SettingsInterface
 import UIKit
 
 enum HomeAction {
@@ -29,16 +32,35 @@ final class HomeCoordinator {
 extension HomeCoordinator: HomeCoordinating {
     func perform(action: HomeAction) {
         guard let viewController = viewController else { return }
-        switch action {
+        dependencies.routerService.navigate(
+            toRoute: action.asRoute,
+            fromView: viewController,
+            presentationStyle: action.asPresentationStyle,
+            animated: true
+        )
+    }
+}
+
+private extension HomeAction {
+    var asRoute: Route {
+        switch self {
+        case .profile:
+            return ProfileRoute()
+        case .help:
+            return HelpRoute()
+        case .settings:
+            return SettingsRoute()
         case .login:
-            dependencies.routerService.navigate(
-                toRoute: LoginRoute(),
-                fromView: viewController,
-                presentationStyle: Replace(),
-                animated: true
-            )
+            return LoginRoute()
+        }
+    }
+
+    var asPresentationStyle: PresentationStyle {
+        switch self {
+        case .login:
+            return Replace()
         default:
-            break
+            return Push()
         }
     }
 }
