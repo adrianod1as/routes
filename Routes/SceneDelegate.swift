@@ -7,10 +7,13 @@
 
 import HTTPClientInterface
 import HTTPClient
+import Help
 import Home
 import Login
+import Profile
 import Registration
 import RouterService
+import Settings
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -32,8 +35,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
         routerService.register(routeHandler: LoginRouteHandler())
+        routerService.register(routeHandler: HelpRouteHandler())
         routerService.register(routeHandler: HomeRouteHandler())
         routerService.register(routeHandler: RegistrationRouteHandler())
+        routerService.register(routeHandler: ProfileRouteHandler())
+        routerService.register(routeHandler: SettingsRouteHandler())
 
         let nav = routerService.navigationController(
             withInitialFeature: LoginFeature.self
