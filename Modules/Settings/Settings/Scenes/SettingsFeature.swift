@@ -1,7 +1,18 @@
+import HTTPClientInterface
+import RouterServiceInterface
 import UIKit
 
-enum SettingsFactory {
-    static func make(with container: SettingsDependencyContainer) -> UIViewController {
+typealias SettingsDependencyContainer = HasNoDependency & HasHTTPClient & HasRouterService
+
+public struct SettingsFeature: Feature, SettingsDependencyContainer {
+    @Dependency public var httpClient: HTTPClienting
+    @Dependency public var routerService: RouterServiceProtocol
+
+    public init() {}
+
+    public func build(fromRoute route: Route?) -> UIViewController {
+        let container = self
+        //        return SettingsFactory.make(with: container)
         let service: SettingsServicing = SettingsService(dependencies: container)
         let coordinator: SettingsCoordinating = SettingsCoordinator(dependencies: container)
         let presenter: SettingsPresenting = SettingsPresenter(coordinator: coordinator, dependencies: container)

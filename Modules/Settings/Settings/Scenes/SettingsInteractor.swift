@@ -39,5 +39,23 @@ extension SettingsInteractor: SettingsInteracting {
         return cell
     }
 
-    func didSelect(index: Int) {}
+    func didSelect(index: Int) {
+        guard let action = menuItems[index].asHomeAction else { return }
+        presenter.didNextStep(action: action)
+    }
+}
+
+private extension Routes {
+    var asHomeAction: SettingsAction? {
+        switch self {
+        case .help:
+            return .help
+        case .profile:
+            return .profile
+        case .login:
+            return .login
+        default:
+            return nil
+        }
+    }
 }
